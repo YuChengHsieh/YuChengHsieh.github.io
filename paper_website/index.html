@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PanoMixSwap – Panorama Mixing via Structural Swapping for Indoor Scene Understanding</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://YuChengHsieh.github.io">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <!-- <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div> -->
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">PanoMixSwap – Panorama Mixing via Structural Swapping for Indoor Scene Understanding</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://YuChengHsieh.github.io">Yu-Cheng Hsieh</a>, </span>
+            <span class="author-block">
+              <a href="https://sunset1995.github.io">Cheng Sun</a>, </span>
+            <span class="author-block">
+              <a href="https://www.linkedin.com/in/suraj-dengale">Suraj Dengale</a>, </span>
+            <span class="author-block">
+              <a href="https://aliensunmin.github.io">Min Sun</a></span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">National Tsing Hua University</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2309.09514.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/YuChengHsieh/PanoMixSwap"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code(Coming Soon)</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            The volume and diversity of training data are critical for modern 
+            deep learning-based methods. Compared to the massive amount of 
+            labeled perspective images, 360◦ panoramic images fall short in both 
+            volume and diversity. 
+          </p>
+          <p>  
+            In this paper, we propose PanoMixSwap, a novel 
+            data augmentation technique specifically designed for indoor panoramic images. 
+            PanoMixSwap explicitly mixes various background styles, foreground furniture, 
+            and room layouts from the existing indoor panorama datasets and generates
+            a diverse set of new panoramic images to enrich the datasets. 
+            We first decompose each panoramic image into its constituent parts: background style,
+            foreground furniture, and room layout. 
+            Then, we generate an augmented image by mixing these three parts from
+            three different images, such as the foreground furniture from one image, 
+            the background style from another image, and the room structure from the third image. 
+            Our method yields high diversity since there is a cubical increase in image combinations.
+          </p>
+          <p>
+            We also evaluate the effectiveness of PanoMixSwap on two indoor scene understanding tasks: 
+            semantic segmentation and layout estimation. 
+            Our experiments demonstrate that state-of-the-art methods trained with PanoMixSwap 
+            outperform their original setting on both tasks consistently.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--/ PanoMixSwap. -->
+<div class="columns is-centered has-text-centered">
+  <div class="column is-four-fifths">
+    <h2 class="title is-3">PanoMixSwap</h2>
+    <center><img src="./static/images/pipeline.png" width="80%"></center>
+    <div class="content has-text-justified">
+      <br>
+      <p>
+        PanoMixSwap involves three major inputs: style sample, structure layout, and furniture sample. 
+        PanoMixSwap is composed of two blocks: Style Fusing Block and Furniture Fusing Block. 
+        The Style Fusing Block generates a foreground-free styled structure image that fuses the background style 
+        from the style image and the room layout from structure layout. Furniture Fusing Block transforms furniture 
+        from the furniture image onto the styled structure image to produce the final augmented image and semantic mask.
+      </p>
+    </div>
+  </div>
+</div>
+<!--/ Visualization. -->
+<div class="columns is-centered has-text-centered">
+  <div class="column is-four-fifths">
+    <h2 class="title is-3">Visualization Results</h2>
+    <center><img src="./static/images/visualization.png" width="80%"></center>
+  </div>
+</div>
+
+<!--/ Qualitative Results. -->
+<div class="columns is-centered has-text-centered">
+  <div class="column is-four-fifths">
+    <h2 class="title is-3">Qualitative Results</h2>
+    <center><img src="./static/images/qualitative_results.png" width="80%"></center>
+  </div>
+</div>
+
+
+
+
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{park2021nerfies,
+  title     = {PanoMixSwap – Panorama Mixing via Structural Swapping for Indoor Scene Understanding},
+  author    = {Yu-Cheng Hsieh and Cheng Sun and Suraj Dengale and Min Sun},
+  journal   = {British Machine Vision Conference (BMVC)},
+  year      = {2023},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="https://arxiv.org/pdf/2309.09514.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/YuChengHsieh" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This webpage template is adapted from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>, 
+            under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0 License</a>.
+          </p>
+          <!-- <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
