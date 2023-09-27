@@ -216,62 +216,130 @@
         <center><img src="./static/images/visualization.png" width="100%"></center>
       </div>
     </div>
+    <br>
 
-    <!-- <div class="columns is-centered has-text-centered">
+    <!-- Semantic Segmentation table -->
+    <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Quantitative Results</h2>
+        <h2 class="title is-5">Semantic Segmentation</h2>
         <div class="table_wrapper">
-          <table class="table is-hoverable is-bordered">
+          <table class="table is-hoverable is-bordered" width="768px">
             <thead>
               <tr>
-                <th scope="col" style="vertical-align:middle;text-align:center;" rowspan="2">Dataset</th>
-                <th scope="col" style="vertical-align:middle;text-align:center;" rowspan="2">Model</th>
-                <th scope="col" style="vertical-align:middle;text-align:center;" rowspan="2">Image Size</th>
-                <th scope="col" style="vertical-align:middle;text-align:center;" rowspan="2">PanoMixSwap</th>
-                <th scope="col" style="vertical-align:middle;text-align:center;" rowspan="2">mIoU(%)</th>
-                <th scope="col" style="vertical-align:middle;text-align:center;" rowspan="2">mACC(%)</th>
+                <th scope="row" style="vertical-align:middle;text-align:center;" rowspan="2">Dataset</th>
+                <th scope="row" style="vertical-align:middle;text-align:center;" rowspan="2">Model</th>
+                <th scope="row" style="vertical-align:middle;text-align:center;" rowspan="2">PanoMixSwap</th>
+                <th scope="row" style="vertical-align:middle;text-align:center;" rowspan="2">mIoU(%)</th>
+                <th scope="row" style="vertical-align:middle;text-align:center;" rowspan="2">mACC(%)</th>
               </tr>
             </thead>
+
             <tr color="red">
-              <td scope="col" style="text-align:left"><span class="highlight">Stanford2D3D</span></td>
-              <td scope="col"></td>
-              <td scope="col"><span class="highlight">60.2</span></td>
-              <td scope="col"><span class="highlight">43.4</span></td>
-              <td scope="col"><span class="highlight">22.3</span></td>
-              <td scope="col">54.8</td>
-              <td scope="col">28.4</td>
+              <td scope="row" rowspan="4" style="vertical-align : middle;text-align:center;"><span class="highlight">Stanford2D3D</span></td>
+              <td scope="row" rowspan="2" style="vertical-align : middle;text-align:center;">HoHoNet</td>
+              <td scope="row">-</td>
+              <td scope="row">52.00</td>
+              <td scope="row">65.00</td>
             </tr>
+
             <tr>
-              <td scope="col" style="text-align:left">ImVoxelNet</td>
-              <td scope="col">RGB</td>
-              <td scope="col">58.0</td>
-              <td scope="col">38.8</td>
-              <td scope="col">19.0</td>
-              <td scope="col">48.7</td>
-              <td scope="col">23.8</td>
+              <td scope="row">&#x2713</td>
+              <td scope="row"><b style=color:#8c198c>56.02</b></td>
+              <td scope="row"><b style=color:#8c198c>67.43</b></td>
             </tr>
+            
             <tr>
-              <td scope="col" style="text-align:left">VoteNet</td>
-              <td scope="col">Point cloud (costly!!)</td>
-              <td scope="col">53.3</td>
-              <td scope="col">38.5</td>
-              <td scope="col">19.8</td>
-              <td scope="col"><span class="highlight">58.6</span></td>
-              <td scope="col"><span class="highlight">33.5</span></td>
+              <td scope="row" rowspan="2" style="vertical-align : middle;text-align:center;">PanoFormer</td>
+              <td scope="row">-</td>
+              <td scope="row">42.20</td>
+              <td scope="row">61.03</td>
             </tr>
+
+            <tr>
+              <td scope="row">&#x2713</td>
+              <td scope="row"><b style=color:#8c198c>42.94</b></td>
+              <td scope="row"><b style=color:#8c198c>62.14</b></td>
+            </tr>
+
+            <tr>
+              <td scope="row" rowspan="8" style="vertical-align : middle;text-align:center;"><span class="highlight">Structured3D</span></td>
+              <td scope="row" rowspan="2" style="vertical-align : middle;text-align:center;">HoHoNet</td>
+              <td scope="row">-</td>
+              <td scope="row">80.80</td>
+              <td scope="row">87.98</td>
+            </tr>
+
+            <tr>
+              <td scope="row">&#x2713</td>
+              <td scope="row"><b style=color:#8c198c>81.96</b></td>
+              <td scope="col"><b style=color:#8c198c>88.52</b></td>
+            </tr>
+
           </table>
         </div>
         <div class="content has-text-justified">
           <p>
-            In practical situations, (1) depth images often exhibit noise and sparsity, as seen in ARKitScenes, and (2) objects can display considerable variation, as exemplified by ScanNet200.
-            We demonstrate that ImGeoNet surpasses prior techniques in addressing these real-world conditions.
-            (3) Lastly, we evaluate ImGeoNet against previous approaches using the standardized ScanNet benchmark, comprising superior depth images and point clouds.
-            Although VoteNet exhibits superior accuracy in this case, it's worth noting that point cloud-based methods are constrained by reliance on expensive 3D sensor data.
           </p>
         </div>
       </div>
-    </div> -->
+    </div>
+    <br>
+    <!-- Layout Estimation Table -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-5">Layout Estimation</h2>
+        <div class="table_wrapper">
+          <table class="table is-hoverable is-bordered" width="768px">
+            <thead>
+              <tr>
+                <th scope="row" style="vertical-align:middle;text-align:center;" rowspan="2">Model</th>
+                <th scope="row" style="vertical-align:middle;text-align:center;" rowspan="2">PanoMixSwap</th>
+                <th scope="row" style="vertical-align:middle;text-align:center;" rowspan="2">3DIoU(%)</th>
+                <th scope="row" style="vertical-align:middle;text-align:center;" rowspan="2">CE(%)</th>
+                <th scope="row" style="vertical-align:middle;text-align:center;" rowspan="2">PE(%)</th>
+              </tr>
+            </thead>
 
+            <tr color="red">
+              <td scope="row" rowspan="2" style="vertical-align : middle;text-align:center;">HorizonNet</td>
+              <td scope="row">-</td>
+              <td scope="row">83.51</td>
+              <td scope="row">0.62</td>
+              <td scope="row" ><b style=color:#8c198c>1.97</b></p></td>
+            </tr>
+
+            <tr>
+              <td scope="row">&#x2713</td>
+              <td scope="row"><b style=color:#8c198c>86.61</b></td>
+              <td scope="row"><b style=color:#8c198c>0.61</b></td>
+              <td scope="row">1.99</td>
+            </tr>
+
+            <tr color="red">
+              <td scope="row" rowspan="2" style="vertical-align : middle;text-align:center;">LGT-Net</td>
+              <td scope="row">-</td>
+              <td scope="row">86.03</td>
+              <td scope="row">0.63</td>
+              <td scope="row">2.11</td>
+            </tr>
+
+            <tr>
+              <td scope="row">&#x2713</td>
+              <td scope="row"><b style=color:#8c198c>86.96</b></td>
+              <td scope="row">0.63</td>
+              <td scope="row"><b style=color:#8c198c>2.04</b></td>
+            </tr>
+
+          </table>
+        </div>
+        <div class="content has-text-justified">
+          <p>
+          </p>
+        </div>
+      </div>
+    </div>
+    <br>
 
     <!--/ Qualitative Results. -->
     <div class="columns is-centered has-text-centered">
