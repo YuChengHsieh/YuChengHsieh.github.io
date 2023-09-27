@@ -116,6 +116,16 @@
                   <span>Paper</span>
                 </a>
               </span>
+              <!-- Arxiv Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2309.09514"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
               <!-- Code Link. -->
               <span class="link-block">
                 <a href="https://github.com/YuChengHsieh/PanoMixSwap"
@@ -125,6 +135,16 @@
                   </span>
                   <span>Code(Coming Soon)</span>
                   </a>
+              </span>
+              <!-- Supplementary Link. -->
+              <span class="link-block">
+                <a href="bmvc_supplementary_materials.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Supplementary</span>
+                </a>
               </span>
             </div>
 
@@ -171,42 +191,97 @@
         </div>
       </div>
     </div>
-  </div>
-</section>
 
-<!--/ PanoMixSwap. -->
-<div class="columns is-centered has-text-centered">
-  <div class="column is-four-fifths">
-    <h2 class="title is-3">PanoMixSwap</h2>
-    <center><img src="./static/images/pipeline.png" width="80%"></center>
-    <div class="content has-text-justified">
-      <br>
-      <p>
-        PanoMixSwap involves three major inputs: style sample, structure layout, and furniture sample. 
-        PanoMixSwap is composed of two blocks: Style Fusing Block and Furniture Fusing Block. 
-        The Style Fusing Block generates a foreground-free styled structure image that fuses the background style 
-        from the style image and the room layout from structure layout. Furniture Fusing Block transforms furniture 
-        from the furniture image onto the styled structure image to produce the final augmented image and semantic mask.
-      </p>
+    <!--/ PanoMixSwap. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">PanoMixSwap</h2>
+        <center><img src="./static/images/pipeline.png" width="80%"></center>
+        <div class="content has-text-justified">
+          <br>
+          <p>
+            PanoMixSwap involves three major inputs: style sample, structure layout, and furniture sample. 
+            PanoMixSwap is composed of two blocks: Style Fusing Block and Furniture Fusing Block. 
+            The Style Fusing Block generates a foreground-free styled structure image that fuses the background style 
+            from the style image and the room layout from structure layout. Furniture Fusing Block transforms furniture 
+            from the furniture image onto the styled structure image to produce the final augmented image and semantic mask.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Visualization. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Visualization Results</h2>
+        <center><img src="./static/images/visualization.png" width="100%"></center>
+      </div>
+    </div>
+
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Quantitative Results</h2>
+        <div class="table_wrapper">
+          <table class="table is-hoverable is-bordered">
+            <thead>
+              <tr>
+                <th scope="col" style="vertical-align:middle;text-align:center;" rowspan="2">Dataset</th>
+                <th scope="col" style="vertical-align:middle;text-align:center;" rowspan="2">Model</th>
+                <th scope="col" style="vertical-align:middle;text-align:center;" rowspan="2">Image Size</th>
+                <th scope="col" style="vertical-align:middle;text-align:center;" rowspan="2">PanoMixSwap</th>
+                <th scope="col" style="vertical-align:middle;text-align:center;" rowspan="2">mIoU(%)</th>
+                <th scope="col" style="vertical-align:middle;text-align:center;" rowspan="2">mACC(%)</th>
+              </tr>
+            </thead>
+            <tr color="red">
+              <td scope="col" style="text-align:left"><span class="highlight">Stanford2D3D</span></td>
+              <td scope="col"></td>
+              <td scope="col"><span class="highlight">60.2</span></td>
+              <td scope="col"><span class="highlight">43.4</span></td>
+              <td scope="col"><span class="highlight">22.3</span></td>
+              <td scope="col">54.8</td>
+              <td scope="col">28.4</td>
+            </tr>
+            <tr>
+              <td scope="col" style="text-align:left">ImVoxelNet</td>
+              <td scope="col">RGB</td>
+              <td scope="col">58.0</td>
+              <td scope="col">38.8</td>
+              <td scope="col">19.0</td>
+              <td scope="col">48.7</td>
+              <td scope="col">23.8</td>
+            </tr>
+            <tr>
+              <td scope="col" style="text-align:left">VoteNet</td>
+              <td scope="col">Point cloud (costly!!)</td>
+              <td scope="col">53.3</td>
+              <td scope="col">38.5</td>
+              <td scope="col">19.8</td>
+              <td scope="col"><span class="highlight">58.6</span></td>
+              <td scope="col"><span class="highlight">33.5</span></td>
+            </tr>
+          </table>
+        </div>
+        <div class="content has-text-justified">
+          <p>
+            In practical situations, (1) depth images often exhibit noise and sparsity, as seen in ARKitScenes, and (2) objects can display considerable variation, as exemplified by ScanNet200.
+            We demonstrate that ImGeoNet surpasses prior techniques in addressing these real-world conditions.
+            (3) Lastly, we evaluate ImGeoNet against previous approaches using the standardized ScanNet benchmark, comprising superior depth images and point clouds.
+            Although VoteNet exhibits superior accuracy in this case, it's worth noting that point cloud-based methods are constrained by reliance on expensive 3D sensor data.
+          </p>
+        </div>
+      </div>
+    </div> -->
+
+
+    <!--/ Qualitative Results. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Qualitative Results</h2>
+        <center><img src="./static/images/qualitative_results.png" width="100%"></center>
+      </div>
     </div>
   </div>
-</div>
-<!--/ Visualization. -->
-<div class="columns is-centered has-text-centered">
-  <div class="column is-four-fifths">
-    <h2 class="title is-3">Visualization Results</h2>
-    <center><img src="./static/images/visualization.png" width="80%"></center>
-  </div>
-</div>
-
-<!--/ Qualitative Results. -->
-<div class="columns is-centered has-text-centered">
-  <div class="column is-four-fifths">
-    <h2 class="title is-3">Qualitative Results</h2>
-    <center><img src="./static/images/qualitative_results.png" width="80%"></center>
-  </div>
-</div>
-
+</section>
 
 
 
