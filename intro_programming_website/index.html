@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--google font的css link-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+        <!--bootstrap的css link-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!--bootstrap icon-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <!--自己寫的css要放在最下面，這樣才能override-->
+        <link rel="stylesheet" href="style.css"/>
+        <!--bootstrap的javascript link-->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        
+        <!--JQuery cdn-->
+        <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+        <!--firebase cdn-->
+
+        <title>Kinopio vs. Alien: The Epic Battle</title>
+    </head>
+
+    <body>
+        <!--無意義 純粹表示一個header-->
+        <header>
+            <div id="header">
+                <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="header_nav">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="#" id="header_pic_frame">
+                            <img src="picture/main_char_icon_1.png" id="header_icon_1"/>
+                            <img src="picture/main_char_icon_2.png" id="header_icon_2"/>
+                        </a>
+                        <!--用手機時才會顯示的-->
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item mx-3">
+                                    <a class="nav-link active hover_red" aria-current="page" href="#">Home</a>
+                                </li>
+
+                                <li class="nav-item dropdown mx-3">
+                                    <a class="nav-link dropdown-toggle hover_red" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                                        Game
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item hover_red" href="#intro">Game Intro</a></li>
+                                    <li><a class="dropdown-item hover_red" href="#background">Game Scene</a></li>
+                                    </ul>
+                                </li>
+                                
+                                <li class="nav-item mx-3">
+                                    <a class="nav-link hover_red" href="#video">Game Video</a>
+                                </li>
+
+                                <li class="nav-item mx-3">
+                                    <a class="nav-link hover_red" href="#developer">Game Developers</a>
+                                </li>
+
+                                <li class="nav-item mx-3">
+                                    <a class="nav-link hover_red" href="#feedback">Feedback</a>
+                                </li>
+                            </ul>
+
+                        </div>
+
+                        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item-right">
+                                    <a class="nav-link nav-link-right hover_red" href="#registration_page" data-toggle="modal" data-target="#registration_page">Register</a>
+                                </li>
+    
+                                <li class="nav-item-right" id="login_text">
+                                    <a class="nav-link nav-link-right hover_red" href="#login_page" data-toggle="modal" data-target="#login_page">Login</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="d-flex justify-content-end">
+                            <ul class="navbar-nav me-auto">
+                                <li class="nav-item-right" id="login_name_toggle">
+                                    <p class="nav-link nav-link-right" id="login_status">Guest</p>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+
+        <!--registration page-->
+        <section id="registration">
+            <section id="modal">
+                <!--tabindex、aria為給盲人看的-->
+                <div class="modal fade" id="registration_page" data-backdrop="static"  tabindex="-1" role="dialog" aria-labelledby="registrationModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content bg_img">
+                            <!--header-->
+                            <div class="modal-header">
+                                <h4 class="modal-title col-md-12 text-center" id="registrationModalLabel">Register</h4>
+                            </div>
+                            <!--body-->
+                            <div class="container">
+                                <div class="row justify-content-center">
+                                    <div class="modal-body col-md-6 text-left">
+                                        <input type="text" id="r_name" placeholder="Please set your username">
+                                        <br>
+                                        <br>
+                                        
+                                        <input type="text" id="r_account" placeholder="Please set your account">
+                                        <br>
+                                        <br>
+                                        
+                                        <input type="password" id="r_password" placeholder="Please set your passward">
+                                        <br>
+                                        <br>
+                                        
+                                        <input type="password" id="r_password_check" placeholder="Please enter your passward again">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--footer-->
+                            <div class="modal-footer">
+                                <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close"/>
+                                <input type="submit" class="btn btn-primary" id="registration_btn" data-dismiss="modal" value="Register">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+
+        <!--login page-->
+        <section id="login">
+            <section id="modal">
+                <!--tabindex、aria為給盲人看的-->
+                <div class="modal fade" id="login_page" data-backdrop="static"  tabindex="-1" role="dialog" aria-labelledby="LoginModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content bg_img">
+                            <!--header-->
+                            <div class="modal-header">
+                                <h4 class="modal-title col-md-12 text-center" id="LoginModalLabel">Login</h4>
+                            </div>
+                            <!--body-->
+                            <div class="container">
+                                <div class="row justify-content-center">
+                                    <div class="modal-body col-md-6 text-left">
+                                        <input type="text" id="l_account" placeholder="Please enter your account">
+                                        <br>
+                                        <br>
+                                        <input type="password" id="l_password" placeholder="Please enter your password">
+                                        <br>
+                                        <br>
+                                        <a style="display:block; text-align:center;" data-dismiss="modal" href="#registration_page" data-toggle="modal" data-target="#registration_page">Create New Account</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--footer-->
+                            <div class="modal-footer">
+                                <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close"/>
+                                <input type="submit" class="btn btn-primary" id="login_btn" data-dismiss="modal" value="login">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!--logout page-->
+        <section id="logOut">
+            <section id="modal">
+                <!--tabindex、aria為給盲人看的-->
+                <div class="modal fade" id="logOut_page" data-backdrop="static"  tabindex="-1" role="dialog" aria-labelledby="LogOutModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content bg_img">
+                            <!--header-->
+                            <div class="modal-header">
+                                <h4 class="modal-title col-md-12 text-center" id="LogOutModalLabel">LogOut登出</h4>
+                            </div>
+                            <!--body-->
+                            <div class="modal-body text-center">
+                                <p class="fs-30">Are you sure you want to log out?</p>
+                            </div>
+                                <!--footer-->
+                                <div class="modal-footer">
+                                    <input type="button" class="btn btn-secondary" data-dismiss="modal" value="No">
+                                    <input type="submit" class="btn btn-primary" id="logOut_btn" data-dismiss="modal" value="Yes">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+
+        <!--無意義 純粹表示一個section-->
+        <!--home section-->
+        <section id="title">
+            <div class="jumbotron">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1>Come and rescue Kinopio now!</h1>
+                            <p class="lead">A game composed of puzzle and shooting elements</p>
+                            <a class="btn" href="https://github.com/YuChengHsieh/Interesting-Room-Escape-and-Shooting-Game">Download the game</a> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--遊戲介紹 section-->
+        <section id="introduction">
+            <div class="container" id="intro">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <h3>Game Intro: Kinopio Village Rescue Mission！</h3>
+                        <div class="row">
+                            <div class="col-md-4 text-center" id = "intro_pic_frame">
+                                <img src="picture/main_char_icon_1.png" id="intro_pic"/>
+                            </div>
+                            <div class="col-md-8">
+                                <div id="intro_accordtion">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12 text-left">
+                                                <div id="accordion ">
+                                                    <div class="card">
+                                                        <div class="card-header" id="headingOne">
+                                                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                                Game Background:
+                                                            </button>
+                                                        </div>
+                                                    
+                                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                                            <div class="card-body">
+                                                                <p>The evil Greenlings have attacked the Mushroom Elves' village, 
+                                                                    and Kinopio's spaceship has been destroyed by the Greenlings as well.
+                                                                    Upon awakening, he discovers that he has inadvertently fallen into a mysterious space 
+                                                                    where he finds hidden spaceship parts. 
+                                                                    Kinopio must find a way to reassemble the spaceship and defeat the Greenlings to save the village！</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card">
+                                                        <div class="card-header" id="headingTwo">
+                                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                                Game Type：
+                                                            </button>
+                                                        </div>
+                                                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                                            <div class="card-body">
+                                                                <p>In the earlier stages, players will solve simple puzzles to find the required number of spaceship parts. 
+                                                                    Once they have collected enough parts, they can assemble the spaceship 
+                                                                    (the quantity of fragments will determine the strength of the spaceship). 
+                                                                    After successful assembly, players will enter a shooting game to battle the Greenlings, 
+                                                                    consisting of two levels: the first level featuring minor enemies and the second level featuring a boss battle.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card">
+                                                        <div class="card-header" id="headingThree">
+                                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                                Game Function：
+                                                            </button>
+                                                            
+                                                        </div>
+                                                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                                            <div class="card-body">
+                                                                <p>In the earlier stages where the protagonist collects parts, players can navigate through various scenes with different music upon scene transitions. 
+                                                                    Interactions with NPCs and activating mechanisms provide players with clues to successfully gather the parts. 
+                                                                    The top of the screen keeps a record of collected parts, and once a specific quantity is reached, 
+                                                                    players can proceed to the assembly station to build the spaceship and embark on their mission. 
+                                                                    Different quantities of parts will result in spaceships of varying strength. 
+                                                                    Both enemy and player characters have health bars, and both sides can shoot bullets. 
+                                                                    Successfully defeating all enemies and the boss before depleting the player's health bar leads to a victorious outcome.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!--遊戲背景-->
+                <div class="row" id="background">
+                    <div class="col-md-12 text-center">
+                        <h3>Ｇame scene</h3>
+                        <div class="row">
+                            <div class="col-md-1" id="arrow_left_frame">
+                                <i class="bi bi-caret-left-square-fill" id="arrow_left"></i>
+                            </div>
+                            <div class="col-md-10" id="background_pic_frame">
+                                <h4 id="background_name">Lobby</h4>
+                                <img src="picture/background1.png" id="background_pic"/>
+                            </div>
+                            <div class="col-md-1" id="arrow_right_frame">
+                                <i class="bi bi-caret-right-square-fill" id="arrow_right" ></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!--遊戲影片 section-->
+        <section id="video">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        <h3>Game Video</h3>
+                        <video src="video/final_project.mp4" controls>載入失敗</video>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--開發者介紹 section-->
+        <section id="developer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        <h3>Game Developers</h3>
+                        <div class="row">
+                            <div class="col-md-4 pic_and_name">
+                                <img src="picture/myphoto2.jpg"/>
+                                <h5><a href="https://yuchenghsieh.github.io">Yu-Cheng Hsieh</a></h5>
+                            </div>
+                            <div class="col-md-8">
+                                <ul class="developer_intro_para">
+                                    <li><a href="http://nthu-en.web.nthu.edu.tw">National Tsing Hua University</a></li>
+                                    <li>Electrical Engineering Department</li>
+                                    <li>Contribution: Game design and coding, as well as website code development.</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4 pic_and_name">
+                                <img src="picture/Kuo.jpg"/>
+                                <h5>Zhih-Yun Kuo</h5>
+                            </div>
+                            <div class="col-md-8">
+                                <ul class="developer_intro_para">
+                                    <li><a href="http://nthu-en.web.nthu.edu.tw">National Tsing Hua University</a></li>
+                                    <li>Contribution: Game design and draw all the game backgrounds.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--意見回饋 section-->
+        <section id="feedback">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        <h3>Feedback</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        <textarea class="form-control" id="suggestion_column"></textarea>
+                        <button type="button" class="btn btn-outline-primary" id ="submit_btn" data-toggle="modal" data-target="#after_reply_modal">
+                            submit
+                          </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!--彈出視窗 -->
+        <div class="modal" tabindex="-1" id="after_reply_modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="reply_text">
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer id="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2 text-left " id="footer_pic_frame">
+                        <img src="picture/main_char_icon_1.png"/>
+                    </div>
+                    <div class="col-md-2 text-left" id="footer_pic_sit_frame">
+                        <img src="picture/main_char_sit1.png"/>
+                    </div>
+                    <div class="col-md-4 text-left">
+                        <h4>Link</h4>
+                        <ul>
+                            <li><a href="#">home</a></li>
+                            <li><a href="#intro">Game Intro</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="#video">Game Video</a></li>
+                            <li><a href="#developer">Game Developers</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 text-left">
+                        <h4>Contact Information</h4>
+                        <p>
+                            <a href="mailto: sphinx5912@gmail.com">sphinx5912@gmail.com</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script src="script.js"></script>
+
+        <!--firebase CDN-->
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="/__/firebase/8.7.1/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="/__/firebase/8.7.1/firebase-analytics.js"></script>
+
+        <!-- Initialize Firebase -->
+        <script src="/__/firebase/init.js"></script>
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-analytics.js"></script>
+
+        <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyCrcBJwUAKYgPbKgWE_rwgDS65CWl7YuA8",
+            authDomain: "game-website-67101.firebaseapp.com",
+            projectId: "game-website-67101",
+            storageBucket: "game-website-67101.appspot.com",
+            messagingSenderId: "206717548030",
+            appId: "1:206717548030:web:1f85c1563d563917b17caf",
+            measurementId: "G-PVQEZLLQWJ"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+        </script>
+    </body>
+</html>

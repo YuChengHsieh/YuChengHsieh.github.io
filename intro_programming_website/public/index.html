@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--google font的css link-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+        <!--bootstrap的css link-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!--bootstrap icon-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <!--自己寫的css要放在最下面，這樣才能override-->
+        <link rel="stylesheet" href="style.css"/>
+        <!--bootstrap的javascript link-->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        
+        <!--JQuery cdn-->
+        <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+        <!--firebase cdn-->
+
+        <title>奇諾比奧大戰外星人</title>
+    </head>
+
+    <body>
+        <!--無意義 純粹表示一個header-->
+        <header>
+            <div id="header">
+                <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="header_nav">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="#" id="header_pic_frame">
+                            <img src="picture/main_char_icon_1.png" id="header_icon_1"/>
+                            <img src="picture/main_char_icon_2.png" id="header_icon_2"/>
+                        </a>
+                        <!--用手機時才會顯示的-->
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item mx-3">
+                                    <a class="nav-link active hover_red" aria-current="page" href="#">Home</a>
+                                </li>
+
+                                <li class="nav-item dropdown mx-3">
+                                    <a class="nav-link dropdown-toggle hover_red" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                                        關於遊戲
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item hover_red" href="#intro">遊戲介紹</a></li>
+                                    <li><a class="dropdown-item hover_red" href="#background">遊戲背景</a></li>
+                                    </ul>
+                                </li>
+                                
+                                <li class="nav-item mx-3">
+                                    <a class="nav-link hover_red" href="#video">遊戲影片</a>
+                                </li>
+
+                                <li class="nav-item mx-3">
+                                    <a class="nav-link hover_red" href="#developer">開發者介紹</a>
+                                </li>
+
+                                <li class="nav-item mx-3">
+                                    <a class="nav-link hover_red" href="#feedback">意見回饋</a>
+                                </li>
+                            </ul>
+
+                        </div>
+
+                        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item-right">
+                                    <a class="nav-link nav-link-right hover_red" href="#registration_page" data-toggle="modal" data-target="#registration_page">註冊</a>
+                                </li>
+    
+                                <li class="nav-item-right" id="login_text">
+                                    <a class="nav-link nav-link-right hover_red" href="#login_page" data-toggle="modal" data-target="#login_page">登入</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="d-flex justify-content-end">
+                            <ul class="navbar-nav me-auto">
+                                <li class="nav-item-right" id="login_name_toggle">
+                                    <p class="nav-link nav-link-right" id="login_status">未登入</p>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+
+        <!--registration page-->
+        <section id="registration">
+            <section id="modal">
+                <!--tabindex、aria為給盲人看的-->
+                <div class="modal fade" id="registration_page" data-backdrop="static"  tabindex="-1" role="dialog" aria-labelledby="registrationModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content bg_img">
+                            <!--header-->
+                            <div class="modal-header">
+                                <h4 class="modal-title col-md-12 text-center" id="registrationModalLabel">Registration註冊</h4>
+                            </div>
+                            <!--body-->
+                            <div class="container">
+                                <div class="row justify-content-center">
+                                    <div class="modal-body col-md-6 text-left">
+                                        <input type="text" id="r_name" placeholder="請輸入暱稱">
+                                        <br>
+                                        <br>
+                                        
+                                        <input type="text" id="r_account" placeholder="請輸入帳號">
+                                        <br>
+                                        <br>
+                                        
+                                        <input type="password" id="r_password" placeholder="請輸入密碼">
+                                        <br>
+                                        <br>
+                                        
+                                        <input type="password" id="r_password_check" placeholder="再次輸入密碼">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--footer-->
+                            <div class="modal-footer">
+                                <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close"/>
+                                <input type="submit" class="btn btn-primary" id="registration_btn" data-dismiss="modal" value="註冊">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+
+        <!--login page-->
+        <section id="login">
+            <section id="modal">
+                <!--tabindex、aria為給盲人看的-->
+                <div class="modal fade" id="login_page" data-backdrop="static"  tabindex="-1" role="dialog" aria-labelledby="LoginModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content bg_img">
+                            <!--header-->
+                            <div class="modal-header">
+                                <h4 class="modal-title col-md-12 text-center" id="LoginModalLabel">Login登入</h4>
+                            </div>
+                            <!--body-->
+                            <div class="container">
+                                <div class="row justify-content-center">
+                                    <div class="modal-body col-md-6 text-left">
+                                        <input type="text" id="l_account" placeholder="請輸入帳號">
+                                        <br>
+                                        <br>
+                                        <input type="password" id="l_password" placeholder="請輸入密碼">
+                                        <br>
+                                        <br>
+                                        <a style="display:block; text-align:center;" data-dismiss="modal" href="#registration_page" data-toggle="modal" data-target="#registration_page">建立新帳號</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--footer-->
+                            <div class="modal-footer">
+                                <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close"/>
+                                <input type="submit" class="btn btn-primary" id="login_btn" data-dismiss="modal" value="登入">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!--logout page-->
+        <section id="logOut">
+            <section id="modal">
+                <!--tabindex、aria為給盲人看的-->
+                <div class="modal fade" id="logOut_page" data-backdrop="static"  tabindex="-1" role="dialog" aria-labelledby="LogOutModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content bg_img">
+                            <!--header-->
+                            <div class="modal-header">
+                                <h4 class="modal-title col-md-12 text-center" id="LogOutModalLabel">LogOut登出</h4>
+                            </div>
+                            <!--body-->
+                            <div class="modal-body text-center">
+                                <p class="fs-30">確定要登出嗎</p>
+                            </div>
+                                <!--footer-->
+                                <div class="modal-footer">
+                                    <input type="button" class="btn btn-secondary" data-dismiss="modal" value="No">
+                                    <input type="submit" class="btn btn-primary" id="logOut_btn" data-dismiss="modal" value="Yes">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+
+        <!--無意義 純粹表示一個section-->
+        <!--home section-->
+        <section id="title">
+            <div class="jumbotron">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1>快來拯救奇諾比奧吧</h1>
+                            <p class="lead">由解謎遊戲及射擊遊戲所組成的遊戲</p>
+                            <a class="btn" href="#">玩遊戲</a> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--遊戲介紹 section-->
+        <section id="introduction">
+            <div class="container" id="intro">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <h3>遊戲介紹 : 奇諾比奧拯救村莊大作戰！</h3>
+                        <div class="row">
+                            <div class="col-md-4 text-center" id = "intro_pic_frame">
+                                <img src="picture/main_char_icon_1.png" id="intro_pic"/>
+                            </div>
+                            <div class="col-md-8">
+                                <div id="intro_accordtion">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12 text-left">
+                                                <div id="accordion ">
+                                                    <div class="card">
+                                                        <div class="card-header" id="headingOne">
+                                                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                                遊戲簡介:
+                                                            </button>
+                                                        </div>
+                                                    
+                                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                                            <div class="card-body">
+                                                                <p>邪惡的綠綠星人攻擊了菇菇精靈們的村莊，而奇諾比奧的飛碟也
+                                                                    被綠綠星人破壞了。醒來後，他發現自己不小心掉入了一個神秘的空間，他
+                                                                    發現這裡竟然藏了組裝飛碟的零件。奇諾比奧要想辦法重新組裝飛碟，並打
+                                                                    倒綠綠星人拯救村莊！</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card">
+                                                        <div class="card-header" id="headingTwo">
+                                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                                遊戲類型：
+                                                            </button>
+                                                        </div>
+                                                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                                            <div class="card-body">
+                                                                <p>前面的關卡會以類似簡單的解謎找到需要數量的零件，數量足夠
+                                                                    後，便可組裝成飛碟（碎片數量多寡會決定飛碟的功能強弱）。組裝成功後，
+                                                                    會進入射擊遊戲與綠綠星人對戰，總共會有兩關，第一關為小怪關，第二關
+                                                                    為魔王關。</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card">
+                                                        <div class="card-header" id="headingThree">
+                                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                                遊戲功能：
+                                                            </button>
+                                                            
+                                                        </div>
+                                                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                                            <div class="card-body">
+                                                                <p>前面蒐集零件的關卡，主角可以在幾個場景裡面走動切換，換場
+                                                                    景時會有不同的音樂。可以跟裡面其他NPC對話或是打開機關來得到線索，
+                                                                    指引玩家成功蒐集到零件。螢幕上方會紀錄蒐集到的零件數，大於特定數量
+                                                                    可以前往組裝站組裝飛碟出發，不同數量的零件會給予不同強度的飛碟。敵
+                                                                    方和我方都有血條，且兩方都可以發射子彈。若在我方血條消耗完前，將敵
+                                                                    人以及魔王全數擊敗，則就算挑戰成功。</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!--遊戲背景-->
+                <div class="row" id="background">
+                    <div class="col-md-12 text-center">
+                        <h3>遊戲背景</h3>
+                        <div class="row">
+                            <div class="col-md-1" id="arrow_left_frame">
+                                <i class="bi bi-caret-left-square-fill" id="arrow_left"></i>
+                            </div>
+                            <div class="col-md-10" id="background_pic_frame">
+                                <h4 id="background_name">大廳</h4>
+                                <img src="picture/background1.png" id="background_pic"/>
+                            </div>
+                            <div class="col-md-1" id="arrow_right_frame">
+                                <i class="bi bi-caret-right-square-fill" id="arrow_right" ></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!--遊戲影片 section-->
+        <section id="video">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        <h3>遊戲影片</h3>
+                        <video src="video/final_project.mp4" controls>載入失敗</video>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--開發者介紹 section-->
+        <section id="developer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        <h3>開發者介紹</h3>
+                        <div class="row">
+                            <div class="col-md-4 pic_and_name">
+                                <img src="picture/inner.png"/>
+                                <h5>謝侑呈 Jordan</h5>
+                            </div>
+                            <div class="col-md-8">
+                                <ul class="developer_intro_para">
+                                    <li>畢業於國立清華大學</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--意見回饋 section-->
+        <section id="feedback">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        <h3>意見回饋</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        <textarea class="form-control" id="suggestion_column"></textarea>
+                        <button type="button" class="btn btn-outline-primary" id ="submit_btn" data-toggle="modal" data-target="#after_reply_modal">
+                            submit提交
+                          </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!--彈出視窗 -->
+        <div class="modal" tabindex="-1" id="after_reply_modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="reply_text">
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer id="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2 text-left " id="footer_pic_frame">
+                        <img src="picture/main_char_icon_1.png"/>
+                    </div>
+                    <div class="col-md-2 text-left" id="footer_pic_sit_frame">
+                        <img src="picture/main_char_sit1.png"/>
+                    </div>
+                    <div class="col-md-4 text-left">
+                        <h4>連結</h4>
+                        <ul>
+                            <li><a href="#">home</a></li>
+                            <li><a href="#intro">遊戲介紹</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="#video">遊戲影片</a></li>
+                            <li><a href="#developer">開發者介紹</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 text-left">
+                        <h4>聯絡我們</h4>
+                        <p>
+                            phone:(+988)915823<br>
+                            E-Mail: <a href="#">sphinx5912@gmail.com</a><br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script src="script.js"></script>
+
+        <!--firebase CDN-->
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="/__/firebase/8.7.1/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="/__/firebase/8.7.1/firebase-analytics.js"></script>
+
+        <!-- Initialize Firebase -->
+        <script src="/__/firebase/init.js"></script>
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-analytics.js"></script>
+
+        <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyCrcBJwUAKYgPbKgWE_rwgDS65CWl7YuA8",
+            authDomain: "game-website-67101.firebaseapp.com",
+            projectId: "game-website-67101",
+            storageBucket: "game-website-67101.appspot.com",
+            messagingSenderId: "206717548030",
+            appId: "1:206717548030:web:1f85c1563d563917b17caf",
+            measurementId: "G-PVQEZLLQWJ"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+        </script>
+    </body>
+</html>
